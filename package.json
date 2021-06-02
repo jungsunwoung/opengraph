@@ -20,6 +20,7 @@
     "body-parser": "1.19.0",
     "cors": "2.8.5",
     "express": "4.17.1",
-    "open-graph-scraper": "4.8.2"
+    "open-graph-scraper": "4.8.2",
+    "opengraph-io": "2.0.0"
   }
 }

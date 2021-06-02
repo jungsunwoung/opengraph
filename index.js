@@ -10,13 +10,18 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/api', function (req, res) {
-  console.log(req)
+  // console.log(req)
   var siteUrl = req.query["code"];
  
   opengraph.getSiteInfo(siteUrl, function(err, siteInfo){
-    console.log('hey err', err);
-    console.log('hey result', siteInfo);
-    res.json(siteInfo);
+    console.log('hey err', err.statusCode);
+    if(err.statusCode===401 ||err.statusCode===400 ||err.statusCode===403 ||err.statusCode===501 ||err.statusCode===502 ||err.statusCode===503 ||err.statusCode===410 || err.statusCode===404 || err.statusCode===500){
+      res.status(400).send("Not Found")
+    
+      res.json(siteInfo);
+    
+    // console.log('hey result', siteInfo);
+    
   });
  
 });
